@@ -32,23 +32,25 @@ choix = prompt(tableau);
 menu();
 
 afficherContact = () => {
-    for(let contacts of annuaire) {
-        console.table(contacts)
-    }
+    // for(let contacts of annuaire) {
+    //     console.table(contacts)
+    // }
+    console.table(annuaire)
 
-    menu();
+    menu()
+
 }
 
 ajouterContact = () => {
-    let nom = prompt("Veuillez saisir un nom : ");
-    let prenom = prompt("Veuillez saisir un prenom : ");
-    let age = prompt("Veuillez saisir un age : ");
+    let nomSaisi = prompt("Veuillez saisir un nom : ");
+    let prenomSaisi = prompt("Veuillez saisir un prenom : ");
+    let ageSaisi = Number(prompt("Veuillez saisir un age : "));
 
     let newContact = {};
 
-    newContact.nom = nom;
-    newContact.prenom = prenom;
-    newContact.age = age;
+    newContact.nom = nomSaisi;
+    newContact.prenom = prenomSaisi;
+    newContact.age = ageSaisi;
     annuaire.push(newContact);
 
     return annuaire + afficherContact();
@@ -56,8 +58,25 @@ ajouterContact = () => {
 }
 
 
-supprimerContact = () => {
+supprimerContact = (annuaire) => {
 
+    annuaire = [];
+
+    let nomSaisi = prompt("Veuillez saisir le nom de la personne à supprimer : ")
+    let index = -1;
+    for(let contacts of annuaire) {
+        if(contacts[i].nom == nomSaisi) {
+            index = i;
+            console.log(nomSaisi)
+        }
+    }
+    if(index != -1) {
+        annuaire.splice(index, annuaire[i]);
+    }
+
+    return annuaire + afficherContact();
+
+    
 }
 
 quitter = () => alert("Au revoir");
@@ -70,7 +89,7 @@ switch (choix) {
     contact = ajouterContact();
     break;
   case "3":
-    contact = supprimerContact();
+    contact = supprimerContact(annuaire);
     break;
   case "4":
     contact = quitter();
