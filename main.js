@@ -60,19 +60,17 @@ ajouterContact = () => {
 
 supprimerContact = (annuaire) => {
 
-    annuaire = [];
-
-    let nomSaisi = prompt("Veuillez saisir le nom de la personne à supprimer : ")
-    let index = -1;
-    for(let contacts of annuaire) {
-        if(contacts[i].nom == nomSaisi) {
-            index = i;
-            console.log(nomSaisi)
-        }
+  
+  let nomSaisi = prompt("Veuillez saisir le nom de la personne à supprimer : ");
+  let index = -1;
+  for(let i = 0; i < annuaire.length; i++) {
+    if(annuaire[i].nom == nomSaisi) {
+      index = i;
     }
-    if(index != -1) {
-        annuaire.splice(index, annuaire[i]);
-    }
+  }
+  if(index > -1) {
+    annuaire.splice(index, 1);
+  }
 
     return annuaire + afficherContact();
 
